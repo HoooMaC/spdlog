@@ -1,6 +1,6 @@
 #pragma once
 
-#define ACTIVATE_LOGGING
+//#define ACTIVATE_LOGGING
 #ifdef ACTIVATE_LOGGING
 
 #include "spdlog/spdlog.h"

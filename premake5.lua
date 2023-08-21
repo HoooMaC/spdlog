@@ -1,27 +1,15 @@
-workspace "spdlog"
-    architecture "x64"
-    staticruntime "on"
-    linkoptions { "/NODEFAULTLIB:library" }
-
-    configurations 
-    {
-        "Debug", 
-        "Release"
-    }
-
-outputdir = "%{cfg.buildcfg}"
-
 project "spdlog"
     language  "C++"
     cppdialect  "C++20"
     systemversion "latest"
     kind "StaticLib"
-    targetdir  ("bin/" .. outputdir.. "-%{prj.name}")
-    objdir  ("bin-int/" .. outputdir .. "-%{prj.name}")
+
+    targetdir  ("%{wks.location}/bin/" .. outputdir.. "-%{prj.name}")
+    objdir  ("%{wks.location}/bin-int/" .. outputdir .. "-%{prj.name}")
 
     files
     {
-        "src/Base/Base.cpp",
+        "include/**.cpp",
         "include/**.h"
     }
     
@@ -38,6 +26,10 @@ project "spdlog"
     {
     }
     
+    filter "configurations:Logging"
+        defines { "_DEBUG", "ACTIVATE_LOGGING" }
+        runtime "Debug"
+
     filter "configurations:Debug"
         defines { "_DEBUG" }
         runtime "Debug"
