@@ -12,7 +12,7 @@
 class BaseLog
 {
 public:
-    std::shared_ptr<spdlog::logger>& GetLogger()
+    inline std::shared_ptr<spdlog::logger>& GetLogger()
     {
         return m_Logger;
     }
