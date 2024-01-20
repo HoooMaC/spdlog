@@ -20,7 +20,7 @@ inline EngineLog engineLog;
 #define ENGINE_WARN(...) engineLog.GetLogger()->warn(##__VA_ARGS__)
 #define ENGINE_ERROR(...) engineLog.GetLogger()->error(##__VA_ARGS__)
 
-#define ENGINE_ASSERT(x, ...) if(!x) { engineLog.GetLogger()->error(##__VA_ARGS__); __debugbreak(); }
+#define ENGINE_ASSERT(x, ...) if(x) { engineLog.GetLogger()->error(##__VA_ARGS__); __debugbreak(); }
 #define ENGINE_FATAL(x, ...) static_assert(!x, ##VA_ARGS__)
 
 #endif // ACTIVATE_LOGGING
